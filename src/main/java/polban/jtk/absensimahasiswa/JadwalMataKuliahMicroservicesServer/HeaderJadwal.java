@@ -17,8 +17,6 @@ import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 import org.hibernate.engine.spi.CascadeStyle;
 
-import polban.jtk.absensimahasiswa.rombonganbelajar.ProgramStudi;
-
 @Entity
 @Table(name= "headerjadwal")
 public class HeaderJadwal implements Serializable{

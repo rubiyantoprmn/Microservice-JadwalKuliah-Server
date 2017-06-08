@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MataKuliahRepository extends JpaRepository<MataKuliah, Long>{
-	static List<MataKuliah> getMataKuliah() {
+	static List<MataKuliah> getAllMataKuliah() {
 		// TODO Auto-generated method stub
 		return null;
 	}

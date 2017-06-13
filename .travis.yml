@@ -14,7 +14,7 @@ install:
   - true
 
 script:
-  - ./mvnw clean package
+  - ./mvnw clean package -Dmaven.test.skip=true
 
 deploy:
   provider: azure_web_apps

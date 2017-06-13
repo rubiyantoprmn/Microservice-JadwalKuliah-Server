@@ -17,6 +17,8 @@ import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 import org.hibernate.engine.spi.CascadeStyle;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name= "headerjadwal")
 public class HeaderJadwal implements Serializable{
@@ -42,9 +44,9 @@ public class HeaderJadwal implements Serializable{
 	@Column(name = "tanggal_perubahan")
 	private Date tanggal_perubahan;
 	
-	@JoinColumn(name = "id_kelas", referencedColumnName = "id_kelas", nullable = false)
-	@OneToMany(cascade = CascadeType.ALL)
-	@NotFound(action = NotFoundAction.IGNORE)
+	
+	@OneToMany(mappedBy = "header_jadwal")
+	@JsonIgnoreProperties("header_jadwal")
 	private List<Jadwal> jadwal;
 	
 	protected HeaderJadwal(){

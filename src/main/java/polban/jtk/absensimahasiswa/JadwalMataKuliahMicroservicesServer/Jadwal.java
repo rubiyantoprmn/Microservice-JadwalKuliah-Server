@@ -13,10 +13,12 @@ import javax.persistence.Table;
 import org.hibernate.annotations.NotFound;
 import org.hibernate.annotations.NotFoundAction;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 
 
 @Entity
-@Table(name= "headerjadwal")
+@Table(name= "jadwal")
 public class Jadwal implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
@@ -24,8 +26,11 @@ public class Jadwal implements Serializable{
 	@Column(name= "id_jadwal")
 	private int  id_jadwal;
 	
-	@Column(name="id_kelas")
-	private int id_kelas;
+	@ManyToOne
+	@JoinColumn(referencedColumnName = "id_kelas")
+	@JsonIgnoreProperties("jadwal")
+	private HeaderJadwal header_jadwal;
+	
 	
 	@Column(name="hari")
 	private String hari;
@@ -48,9 +53,9 @@ public class Jadwal implements Serializable{
 		
 	}
 	
-	public Jadwal(int id_jadwal,int id_kelas, String hari, int jamke, MataKuliah kd_mk, String nip, String ruangan){
+	public Jadwal(int id_jadwal,HeaderJadwal id_kelas, String hari, int jamke, MataKuliah kd_mk, String nip, String ruangan){
 		this.id_jadwal = id_jadwal;
-		this.id_kelas = id_kelas;
+		this.header_jadwal = id_kelas;
 		this.hari = hari;
 		this.jamke = jamke;
 		this.kd_mk = kd_mk;
@@ -67,12 +72,12 @@ public class Jadwal implements Serializable{
 		return this.id_jadwal;
 	}
 	
-	public void setIdKelas(int id_kelas){
-		this.id_kelas = id_kelas;
+	public void setHeaderJadwal(HeaderJadwal id_kelas){
+		this.header_jadwal = id_kelas;
 	}
 	
-	public int getIdKelas(){
-		return this.id_kelas;
+	public HeaderJadwal getHeaderJadwal(){
+		return this.header_jadwal;
 	}
 	
 	public void setHari(String hari){
@@ -117,7 +122,7 @@ public class Jadwal implements Serializable{
 	
 	public String toString()
 	{
-		return id_jadwal + "\t" + id_kelas + "\t" + hari + "\t" + jamke + "\t" + kd_mk + "\t" + nip + "\t" + ruangan;
+		return id_jadwal + "\t" + header_jadwal + "\t" + hari + "\t" + jamke + "\t" + kd_mk + "\t" + nip + "\t" + ruangan;
 	}
 	
 	

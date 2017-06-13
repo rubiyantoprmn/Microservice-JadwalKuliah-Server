@@ -18,7 +18,6 @@ protected Logger logger = Logger.getLogger(JadwalController.class.getName());
 	@Autowired    
 	JadwalRepository repository;
 	
-	
 
 	@RequestMapping(method = RequestMethod.GET)
 	public List<Jadwal> findAll()
